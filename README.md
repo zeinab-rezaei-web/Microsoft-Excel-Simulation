@@ -1,7 +1,7 @@
 # Microsoft-Excel-Simulation
 Microsoft-Excel-Simulation
 
-- [View Demo of this Project](https://zeinab-rezaei-web.github.io/Microsoft-Excel-Simulation/)
+- [Click to view demo of this project](https://zeinab-rezaei-web.github.io/Microsoft-Excel-Simulation/)
 
 https://user-images.githubusercontent.com/121185931/228948447-89e47916-73f1-40ed-a7ee-5e029c791226.mp4
 
