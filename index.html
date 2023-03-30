@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Excel</title>
+    <link rel="stylesheet" href="assets/styles/master.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/styles/fontello.css">
+   
+
+</head>
+<body onkeyup="_keyup(event)">
+    <main class="container-fluid m-0 p-0" id="full-excel">
+        <div class="row">
+            <section class="col-12">
+                <header class="col-12" id="header">
+                    <div class="col-4">
+                        <i class="demo-icon icon-floppy-1"></i>
+                        <i class="demo-icon icon-ccw"></i>
+                        <i class="demo-icon icon-cw"></i>
+                    </div>
+                    <div class="col-4">
+                        <p>
+                            Book1- Microsoft Excel
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <i class="demo-icon icon-minus"></i>
+                        <i class="demo-icon icon-popup"></i>
+                        <i class="demo-icon icon-cancel" onclick="closeexcel(this)" id="closeexcel"></i>
+                    </div>
+                </header>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col-12">
+                <div class="col-12" id="tabs">
+                    <div class="col-10 tabsleft">
+                        <span onclick="openmenu(this)">file</span>
+                        <span>home</span>
+                        <span>page layout</span>
+                        <span>formulas</span>
+                        <span>data</span>
+                        <span>review</span>
+                        <span>view</span>
+                        <div>
+                            <i class="demo-icon icon-search"></i>
+                            <input onclick="_tabclick(this)" placeholder="Tell me what you want to do...">
+                        </div>
+                    </div>
+                    <div class="col-2 tabsright">
+                        <span>sign in</span>
+                        <span>share</span>
+                    </div>
+                </div>
+                <div class="row" id="tools">
+                    <section class="col-3 p-1">
+                        <figure class="col-5" onclick="_paste(this)">
+                            <img src="assets/img/paste.PNG" alt="">
+                            <figcaption>Paste</figcaption>
+                            <i class="demo-icon icon-down-dir"></i>
+                        </figure>
+                        <div class="col-7">
+                            <figure class="col-6" onclick="_cut(this)">
+                                <img src="assets/img/cut.PNG" alt="">
+                                <figcaption>Cut</figcaption>
+                            </figure>
+                            <figure class="col-8" onclick="_copy(this)">
+                                <img src="assets/img/copy.PNG" alt="">
+                                <figcaption>Copy</figcaption>
+                                <i class="demo-icon icon-down-dir"></i>
+                            </figure>
+                            <figure class="col-12" onclick="_formatpainter(this)">
+                                <img src="assets/img/format.PNG" alt="">
+                                <figcaption>Format Painter</figcaption>
+                            </figure>
+                        </div>
+                    </section>
+                    <section class="col-4 p-2">
+                       <div class="row p-0 m-0">
+                            <select name="" id="fontname" onchange="_getfontname(this)">
+                                <optgroup label="All Fonts">
+                                    <option value="Times">Times New Roman</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="Verdana">Verdana</option>
+                                    <option value="Tahoma">Tahoma</option>
+                                    <option value="Trebuchet">Trebuchet MS</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Garamond">Garamond</option>
+                                    <option value="Courier">Courier New</option>
+                                    <option value="Brush">Brush Script MT</option>
+                                </optgroup>
+                            </select>
+                            <select name="" id="fontsize" onchange="_getfontsize(this)">
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="14">14</option>
+                                    <option value="16">16</option>
+                                    <option value="18">18</option>
+                                    <option value="20">20</option>
+                            </select>
+                            <div id="increasefont" class="ps-0" onclick="_increasefont(this)">
+                                <i class="demo-icon icon-font"></i>
+                                <i class="demo-icon icon-up-dir"></i>
+                            </div>
+                            <div id="decreasefont" class="ps-0" onclick="_decreasefont(this)">
+                                <i class="demo-icon icon-font"></i>
+                                <i class="demo-icon icon-down-dir"></i>
+                            </div>
+                       </div>
+                       <div class="row p-0 m-0">
+                            <i class="demo-icon icon-bold" onclick="_bolder(this)"></i>
+                            <i class="demo-icon icon-italic-1" onclick="_italic(this)"></i>
+                            <i class="demo-icon icon-underline" onclick="_underline(this)"></i>
+                            <section id="bgcolor">
+                                <figure data-stat="true" onclick="_openbgcolorbox(this)">
+                                    <img src="assets/img/bgcolor.PNG" alt="">
+                                    <figcaption></figcaption>
+                                    <i class="demo-icon icon-down-dir"></i>
+                                </figure>
+
+                            </section>
+                            <section id="fontcolor">
+                                <figure data-stat="true" onclick="_openfontcolorbox(this)">
+                                    <img src="assets/img/fontcolor.PNG" alt="">
+                                    <figcaption></figcaption>
+                                    <i class="demo-icon icon-down-dir"></i>
+                                </figure>
+                            </section>
+                            <div data-stat="true" class="colorbox">
+                                <header>Theme Colors</header>
+                                <span data-color="rgb(255, 255, 255)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(242, 242, 242 )" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(217, 217, 217)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(191, 191, 191 )" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(166, 166, 166)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(128, 128, 128) " onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(0, 0, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(128, 128, 128)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(89, 89, 89)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(64, 64, 64)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(38, 38, 38)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(13, 13, 13)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(231, 230, 230)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(208, 206, 206)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(174, 170, 170)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(117, 113, 113)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(58, 56, 56)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(22, 22, 22)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(68, 84, 106)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(214, 220, 228)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(172, 185, 202)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(132, 151, 176)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(51, 63, 79)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(34, 43, 53)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(91, 155, 213)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(221, 235, 247)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(189, 215, 238)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(155, 194, 230)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(47, 117, 181)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(31, 78, 120)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(237, 125, 49)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(252, 228, 214)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(248, 203, 173)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(244, 176, 132)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(198, 89, 17)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(131, 60, 12)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(165, 165, 165)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(237, 237, 237)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(219, 219, 219)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(201, 201, 201)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(123, 123, 123)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(82, 82, 82)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 192, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 242, 204)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 230, 153)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 217, 102)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(191, 143, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(128, 96, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(68, 114, 196)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(217, 225, 242)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(180, 198, 231)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(142, 169, 219)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(48, 84, 150)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(32, 55, 100)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(112, 173, 71)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(226, 239, 218)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(198, 224, 180)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(169, 208, 142)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(84, 130, 53)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(55, 86, 35)" onclick="_getcolor(this)"></span>
+                                <header>Standard Colors</header>
+                                <span data-color="rgb(192, 0, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 0, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 192, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(255, 255, 0)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(146, 208, 80)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(0, 176, 80)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(0, 176, 240)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(0, 112, 192)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(0, 32, 96)" onclick="_getcolor(this)"></span>
+                                <span data-color="rgb(112, 48, 160)" onclick="_getcolor(this)"></span>
+                        </div>
+                       </div>
+                    </section>
+                </div>
+        <!-- <div class="row">
+            <section class="col-12">
+                <div class="col-12" id="FormulBar">
+
+                </div>
+            </section>
+        </div> -->
+        <div class="row">
+            <section class="col-12" id="cells">
+                <div class="col-12" id="columns">
+                    <span>X</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column1" onmousemove="_mousemove(event)">A</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column2" onmousemove="_mousemove(event)">B</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column3" onmousemove="_mousemove(event)">C</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column4" onmousemove="_mousemove(event)">D</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column5" onmousemove="_mousemove(event)">E</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column6" onmousemove="_mousemove(event)">F</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column7" onmousemove="_mousemove(event)">G</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column8" onmousemove="_mousemove(event)">H</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column9" onmousemove="_mousemove(event)">I</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column10" onmousemove="_mousemove(event)">J</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column11" onmousemove="_mousemove(event)">K</span>
+                    <span onmouseenter="_cHover(this)" onmouseleave="_cLeave(this)" onclick="_cClick(this)" class="column12" onmousemove="_mousemove(event)">L</span>
+                </div>
+                <div class="col-12 cells" id="row1">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">1</span>
+                   
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row2">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">2</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row3">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">3</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row4">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">4</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row5">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">5</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row6">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">6</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row7">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">7</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row8">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">8</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row9">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">9</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row10">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">10</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row11">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">11</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row12">
+                    <span oonmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">12</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row13">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">13</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row14">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">14</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row15">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">15</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row16">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">16</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row17">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">17</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row18">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">18</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row19">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">19</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+                <div class="col-12 cells" id="row20">
+                    <span onmouseenter="_rHover(this)" onmouseleave="_rLeave(this)" onclick="_rClick(this)">20</span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child1"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child2"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child3"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child4"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child5"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child6"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child7"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child8"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child9"  spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child10" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child11" spellcheck="false"></span>
+                    <span ondblclick="_doubleclick(event)" onclick="_singleclick(event)" data-c="true" data-dc="true" data-b="true" data-u="true" data-i="true" data-fn="true" data-fs="true" class="child12" spellcheck="false"></span>
+                </div>
+            </section>
+        </div>
+        <div class="row" id="">
+            <section class="col-12">
+                <div class="col-12" id="sheets">
+                    <i class="demo-icon icon-left-dir"></i>
+                    <i class="demo-icon icon-right-dir"></i>
+                    <span> Sheet1</span>
+                    <i class="demo-icon icon-plus"></i>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col-12">
+                <div class="col-12" id="zoom">
+                    <span>-</span>
+                    <span></span>
+                    <span>+</span>
+                    <span>100%</span>
+                </div>
+            </section>
+        </div>
+        <div id="shadow"></div>
+        <section id="closewindow">
+            <div>
+                <header>
+                    <span>Microsoft Excel</span>
+                    <i class="demo-icon icon-cancel" onclick="closealert(this)"></i>
+                </header>
+                <div>
+                    <div>
+                        <img src="assets/img/alert.PNG" alt="">
+                        <p>Want to save your 'Book1.xlsx'?</p>
+                    </div>
+                    <div>
+                        <button>Save</button>
+                        <button>Don't Save</button>
+                        <button onclick="closealert(this)">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="sidemenu">
+                <ul>
+                    <li>
+                    <i class="demo-icon icon-left-circled" onclick="closemenu(this)"></i>
+                    </li>
+                    <li>info</li>
+                    <li>new</li>
+                    <li>open</li>
+                    <li>save</li>
+                    <li>save as</li>
+                    <li>print</li>
+                    <li>share</li>
+                    <li>export</li>
+                    <li>publish</li>
+                    <li>close</li>
+                    <li>account</li>
+                    <li>options</li>
+                </ul>
+                <div>
+                    <h1>Info</h1>
+                    <h2>Colors</h2>
+                    <h3>Desktop</h3>
+                    <ul>
+                        <li>
+                            <figure>
+                                <img src="assets/img/pic1.PNG" alt="">
+                                <figcaption>
+                                    <h3>protect workbook</h3>
+                                    <p>Control what type of changes people can make to this workbook.</p>
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="assets/img/pic2.PNG" alt="">
+                                <figcaption>
+                                    <h3>inspect workbook</h3>
+                                    <p>Before publishing this file, be aware that it contains...</p>
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="assets/img/pic3.PNG" alt="">
+                                <figcaption>
+                                    <h3>manage workbook</h3>
+                                    <p>Check in, check out and recover unsaverd changes.</p>
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="assets/img/pic4.PNG" alt="">
+                                <figcaption>
+                                    <h3>browse view options</h3>
+                                    <p>Pick what user can see when this workbook is viewd on the web</p>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+        </section>
+    </main>
+
+    <script src="assets/js/master.js"></script>
+</body>
+</html>
